@@ -10,10 +10,16 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'excerpt', 'body', 'category_id'];
+    protected $fillable = ['title', 'excerpt', 'body', 'category_id', 'user_id'];
 
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    // By default -> Laravel assumes that the foreign key = author_id based on the function name
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
