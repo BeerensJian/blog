@@ -12,6 +12,8 @@ class Post extends Model
 
     protected $fillable = ['title', 'excerpt', 'body', 'category_id', 'user_id'];
 
+    protected $with = ['author', 'category'];
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
