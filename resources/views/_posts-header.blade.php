@@ -24,11 +24,11 @@
                 </button>
             </x-slot>
 
-            <x-dropdown-link href="/" :active="request()->routeIs('home')">All</x-dropdown-link>
+            <x-dropdown-link href="/" :active="count(request()->query()) == 0">All</x-dropdown-link>
             @foreach($categories as $category)
                 <x-dropdown-link
-                    href="/categories/{{ $category->slug }}"
-                    :active="isset($currentCategory) && $currentCategory->is($category)"
+                    href="/?category={{ $category->slug }}"
+                    :active="request('category') === $category->slug ?? false"
                 >
                     {{ $category->name }}
                 </x-dropdown-link>
