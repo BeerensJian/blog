@@ -12,14 +12,14 @@ class PostController extends Controller
     public function index(): View
     {
         // declared filter method as query scope on filter model
-        return view('posts', [
-            'posts' => Post::with(['category', 'author'])->filter(request(['search', 'category']))->latest()->get(),
+        return view('posts.index', [
+            'posts' => Post::with(['category', 'author'])->filter(request(['search', 'category', 'author']))->latest()->get(),
             'categories' => Category::all()
         ]);
     }
 
     public function show(Post $post)
     {
-        return view('post', ['post' => $post]);
+        return view('posts.show', ['post' => $post]);
     }
 }
