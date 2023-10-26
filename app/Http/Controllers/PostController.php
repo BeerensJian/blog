@@ -9,11 +9,11 @@ use Illuminate\View\View;
 
 class PostController extends Controller
 {
-    public function index(): View
+    public function index()
     {
         // declared filter method as query scope on filter model
         return view('posts.index', [
-            'posts' => Post::with(['category', 'author'])->filter(request(['search', 'category', 'author']))->latest()->get(),
+            'posts' => Post::with(['category', 'author'])->filter(request(['search', 'category', 'author']))->latest()->paginate()->withQueryString(),
             'categories' => Category::all()
         ]);
     }

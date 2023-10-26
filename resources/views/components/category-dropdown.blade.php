@@ -14,10 +14,10 @@
         </button>
     </x-slot>
 
-    <x-dropdown-link href="/" :active="count(request()->query()) == 0">All</x-dropdown-link>
+    <x-dropdown-link href="/?{{ http_build_query(request()->only(['search'])) }}" :active="count(request()->query()) == 0">All</x-dropdown-link>
     @foreach($categories as $category)
         <x-dropdown-link
-            href="/?category={{ $category->slug }}&{{ http_build_query(request()->except('category')) }}"
+            href="/?category={{ $category->slug }}&{{ http_build_query(request()->except('category', 'page')) }}"
             :active="request('category') === $category->slug ?? false"
         >
             {{ $category->name }}
