@@ -16,8 +16,17 @@
             </a>
         </div>
 
-        <div class="mt-8 md:mt-0">
-            <a href="/" class="text-xs font-bold uppercase">Home Page</a>
+        <div class="mt-8 md:mt-0 flex items-baseline text-blue-500">
+            @if(auth()->check())
+                <form action="/logout" method="post">
+                    @csrf
+                    <button>Logout</button>
+                </form>
+            @else
+                <a href="/login" class="text-xs font-bold uppercase">Login</a>
+                <a href="/register" class="text-xs font-bold uppercase pl-6">Register</a>
+            @endif
+
 
             <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                 Subscribe for Updates

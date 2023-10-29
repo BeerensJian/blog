@@ -19,6 +19,7 @@
         @endif
 
     </main>
+    <x-flash/>
 </x-layout>
 
 
