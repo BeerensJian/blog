@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,5 +27,12 @@ class PostFactory extends Factory
             "user_id" => User::factory(),
             "category_id" => Category::factory()
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Post $post){
+            $post->comments()->saveMany(Comment::factory(rand(1,5))->make());
+        });
     }
 }
