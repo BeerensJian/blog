@@ -23,7 +23,7 @@
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                            id="username" type="text" placeholder="Username" name="username"
                     >
-                    @if($errors->has('name'))
+                    @if($errors->has('username'))
                         <span class="text-xs text-red-500">{{ $errors->first('username') }}</span>
                     @endif
                 </div>
@@ -45,7 +45,7 @@
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                            id="password" type="password" placeholder="*******" name="password"
                     >
-                    @if($errors->has('name'))
+                    @if($errors->has('password'))
                         <span class="text-xs text-red-500">{{ $errors->first('password') }}</span>
                     @endif
                 </div>

@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    // validate the user input
-    // if the user input is correct : find the post, create a comment for it
-    // redirect to previous page
-
-    public function store()
+    public function store(Post $post)
     {
         if (!auth()->check()) {
             return redirect()->back()->withErrors(['auth' => 'You need to be logged in to post a comment']);
         }
 
-        dd('woof');
-        request()->validate([
+        $params = request()->validate([
            "body" => "required|string"
         ]);
 
+        $post->comments()->create([
+            'body' => $params['body'],
+            'user_id' => auth()->user()->id
+        ]);
 
+        return redirect()->back()->with('success', 'comment succesfully created!');
     }
 }
