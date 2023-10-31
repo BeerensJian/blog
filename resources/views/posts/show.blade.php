@@ -51,6 +51,15 @@
             </div>
         </article>
         <div class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10 space-y-6">
+            <form method="post" action="/posts/{{ $post->id }}/comments" class="col-start-5 col-span-8 flex gap-8 bg-gray-100 rounded p-6 border-gray-200 border border-gray-200 flex-wrap">
+                @csrf
+                <textarea name="body" cols="50" rows="6" class="p-2 flex-1"></textarea>
+                <button class="bg-blue-500 text-white rounded h-16 p-2">Comment</button>
+                @error('auth')
+                    <span class="text-red-500 text-xs w-full">{{ $errors->first('auth')}}</span>
+                @enderror
+
+            </form>
             @foreach($post->comments as $comment)
                 <x-comment :comment="$comment"/>
             @endforeach
