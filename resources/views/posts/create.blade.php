@@ -2,7 +2,7 @@
     <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
         <section class="max-w-md mx-auto bg-gray-100 p-8 rounded border border-gray-200">
             <h1 class="text-2xl text-bold text-center">Create a post</h1>
-            <form action="/admin/posts/create" method="post">
+            <form action="/admin/posts/create" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
@@ -44,8 +44,21 @@
                 </div>
 
                 <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="thumbnail">
+                        Thumbnail
+                    </label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                              id="thumbnail" name="thumbnail" type="file"
+                    >
+
+                    @if($errors->has('thumbnail'))
+                        <span class="text-xs text-red-500">{{ $errors->first('thumbnail') }}</span>
+                    @endif
+                </div>
+
+                <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="category_id">
-                        Title
+                        Category
                     </label>
 
 

@@ -31,16 +31,22 @@ class PostController extends Controller
 
     public function store()
     {
+
         // validate the form data, check for id exists on category
         $params = request()->validate([
             "title" => ["required", "string"],
             "excerpt" => "required",
             "body" => "required",
-            "category_id" => ["required", Rule::exists('categories', 'id')]
+            "category_id" => ["required", Rule::exists('categories', 'id')],
+            "thumbnail" => ["image", 'mimes:jpeg,png,jpg,gif,svg']
         ]);
 
-        // associate the user with the post
+        // store the file on disk, get path
+        $path = request()->file('thumbnail')->store('thumbnails');
+
+        // associate the post with the user and thumbnail
         $params["user_id"] = auth()->user()->id;
+        $params["thumbnail"] = $path;
         Post::create($params);
 
 
