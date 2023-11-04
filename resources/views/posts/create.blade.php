@@ -10,20 +10,12 @@
                 <x-form.input name="thumbnail" type="file" />
 
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="category_id">
-                        Category
-                    </label>
+                    <x-form.label name="category_id"/>
 
-
-                    @php
-                    $categories = \App\Models\Category::all()
-
-                    @endphp
                     <select id="category_id" name="category_id">
                         @foreach($categories as $category)
                             <option value="{{ $category->getKey() }}">{{ $category->name }}</option>
                         @endforeach
-
                     </select>
                 </div>
 
