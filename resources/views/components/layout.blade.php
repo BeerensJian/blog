@@ -16,12 +16,26 @@
             </a>
         </div>
 
-        <div class="mt-8 md:mt-0 flex items-baseline text-blue-500">
+        <div class="mt-8 md:mt-0 flex items-baseline">
             @if(auth()->check())
-                <form action="/logout" method="post">
-                    @csrf
-                    <button>Logout</button>
-                </form>
+
+                <x-dropdown>
+                    <x-slot name="trigger">
+                        <button class="font-bold text-black mr-6">Welcome, {{ auth()->user()->name }}</button>
+                    </x-slot>
+
+                    
+                    <x-dropdown-link href="/admin/posts/create">Create Post</x-dropdown-link>
+                    <x-dropdown-link href="/admin/dashboard">Dashboard</x-dropdown-link>
+                    <x-dropdown-link href="#" @click.prevent="document.querySelector('#logout').submit()">Logout</x-dropdown-link>
+
+                    <form id="logout" action="/logout" method="post" hidden>
+                        @csrf
+                        <button>Logout</button>
+                    </form>
+                </x-dropdown>
+
+
             @else
                 <a href="/login" class="text-xs font-bold uppercase">Login</a>
                 <a href="/register" class="text-xs font-bold uppercase pl-6">Register</a>

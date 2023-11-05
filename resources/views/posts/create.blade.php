@@ -1,7 +1,7 @@
 <x-layout>
     <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
-        <section class="max-w-md mx-auto bg-gray-100 p-8 rounded border border-gray-200">
-            <h1 class="text-2xl text-bold text-center">Create a post</h1>
+        <section class="max-w-2xl mx-auto bg-gray-100 p-8 rounded border border-gray-200">
+            <h1 class="text-2xl text-bold text-center mb-6">Create a post</h1>
             <form action="/admin/posts/create" method="post" enctype="multipart/form-data">
                 @csrf
                 <x-form.input name="title"/>

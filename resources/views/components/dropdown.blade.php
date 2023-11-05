@@ -1,6 +1,6 @@
 <div
     x-data="{ show: false }"
-    class="relative flex flex-col lg:inline-flex items-center bg-gray-100 rounded-xl lg:w-32"
+    class="relative flex flex-col lg:inline-flex items-center rounded-xl w-fit"
 >
 {{-- Trigger --}}
     <div @click="show = !show">
@@ -8,7 +8,7 @@
     </div>
 
 {{--  Links  --}}
-    <div x-show="show" class="inline-flex flex-col w-full">
+    <div x-show="show" class="inline-flex flex-col w-full absolute bg-gray-100 top-12 rounded py-3">
         {{ $slot }}
     </div>
 </div>

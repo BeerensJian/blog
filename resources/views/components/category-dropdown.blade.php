@@ -1,6 +1,6 @@
 <x-dropdown>
     <x-slot name="trigger">
-        <button class="py-2 pl-3 pr-9 text-sm font-semibold inline-flex w-full">
+        <button class="py-3 pl-3 pr-9 rounded-xl text-sm font-semibold inline-flex w-full">
             <span>{{ request('category') ?? 'Category' }}</span>
             <svg class="transform -rotate-90 absolute pointer-events-none" style="right: 12px;" width="22"
                  height="22" viewBox="0 0 22 22">
