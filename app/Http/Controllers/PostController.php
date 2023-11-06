@@ -31,7 +31,6 @@ class PostController extends Controller
 
     public function store()
     {
-
         // validate the form data, check for id exists on category
         $params = request()->validate([
             "title" => ["required", "string"],

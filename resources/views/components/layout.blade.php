@@ -24,9 +24,9 @@
                         <button class="font-bold text-black mr-6">Welcome, {{ auth()->user()->name }}</button>
                     </x-slot>
 
-                    
+
                     <x-dropdown-link href="/admin/posts/create">Create Post</x-dropdown-link>
-                    <x-dropdown-link href="/admin/dashboard">Dashboard</x-dropdown-link>
+                    <x-dropdown-link href="/admin/posts">Dashboard</x-dropdown-link>
                     <x-dropdown-link href="#" @click.prevent="document.querySelector('#logout').submit()">Logout</x-dropdown-link>
 
                     <form id="logout" action="/logout" method="post" hidden>

@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
@@ -28,6 +29,8 @@ Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
 
 Route::get('/admin/posts/create', [PostController::class, 'create'])->middleware('admin');
 Route::post('/admin/posts/create', [PostController::class, 'store'])->middleware('admin');
+Route::get('/admin/posts', [AdminPostController::class, 'index']);
+Route::get('/admin/posts/{post}/edit', [AdminPostController::class, 'edit'])->name('post-edit');
 
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
