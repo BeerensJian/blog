@@ -6,7 +6,7 @@
     </div>
 
     <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-        <a href=""><button class="bg-white px-4 rounded-md border border-gray-200">Edit</button></a>
+        <a href="/admin/posts/{{ $post->id }}/edit"><button class="bg-white px-4 rounded-md border border-gray-200">Edit</button></a>
         <p class="mt-1 text-xs leading-5 text-gray-500">Last edited:
             <time datetime="2023-01-23T13:23Z">{{ $post->created_at->diffForHumans() }}</time>
         </p>

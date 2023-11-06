@@ -31,6 +31,7 @@ Route::get('/admin/posts/create', [PostController::class, 'create'])->middleware
 Route::post('/admin/posts/create', [PostController::class, 'store'])->middleware('admin');
 Route::get('/admin/posts', [AdminPostController::class, 'index']);
 Route::get('/admin/posts/{post}/edit', [AdminPostController::class, 'edit'])->name('post-edit');
+Route::put('/admin/posts/{post}/edit', [AdminPostController::class, 'update'])->name('post-update');
 
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');

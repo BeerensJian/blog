@@ -22,10 +22,11 @@ class AdminPostController extends Controller
             'categories' => Category::all(),
             'post' => $post
         ]);
-            //show the post form
-            //maybe extract the form base in a component
-            //fill in all the data
+    }
 
+    public function update()
+    {
+        dd('update endpoint hit');
     }
 
 }
