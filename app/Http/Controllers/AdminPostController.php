@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AdminPostController extends Controller
 {
@@ -24,9 +25,23 @@ class AdminPostController extends Controller
         ]);
     }
 
-    public function update()
+    public function update(Post $post)
     {
-        dd('update endpoint hit');
+        $params = request()->validate([
+            "title" => ["required", "string"],
+            "excerpt" => "required",
+            "body" => "required",
+            "category_id" => ["required", Rule::exists('categories', 'id')],
+            "thumbnail" => ["image", 'mimes:jpeg,png,jpg,gif,svg']
+        ]);
+
+        if (isset($params['thumbnail'])) {
+            $params['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+        }
+
+        $post->update($params);
+
+        return redirect('/')->with('success', 'post updated!');
     }
 
 }
